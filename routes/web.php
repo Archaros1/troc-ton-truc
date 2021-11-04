@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/makeOffer', [App\Http\Controllers\ItemController::class, 'makeOffer'])->name('offer.make');
+Route::post('/storeOffer', [App\Http\Controllers\ItemController::class, 'storeOffer'])->name('offer.store');

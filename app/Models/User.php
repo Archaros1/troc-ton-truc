@@ -46,4 +46,9 @@ class User extends Authenticatable
     protected $attributes = [
         'is_admin' => 0,
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'owner');
+    }
 }
